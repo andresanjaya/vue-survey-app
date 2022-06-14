@@ -114,6 +114,7 @@ export default {
         });
 
       this.enteredName = '';
+      this.enteredAge = '';
       this.chosenHobbies = null;
     },
   },
