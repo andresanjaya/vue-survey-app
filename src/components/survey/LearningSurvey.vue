@@ -1,30 +1,56 @@
 <template>
   <section>
     <base-card>
-      <h2>How was you learning experience?</h2>
+      <h2>What are YOUR Hobbies?</h2>
       <form @submit.prevent="submitSurvey">
         <div class="form-control">
           <label for="name">Your Name</label>
-          <input type="text" id="name" name="name" v-model.trim="enteredName" />
+          <input type="text" id="name" name="name" v-model.trim="enteredName" required />
         </div>
-        <h3>My learning experience was ...</h3>
         <div class="form-control">
-          <input type="radio" id="rating-poor" value="poor" name="rating" v-model="chosenRating" />
-          <label for="rating-poor">Poor</label>
+          <label for="name">Your Age</label>
+          <br>
+          <input type="number" id="age" name="age" v-model.trim="enteredAge" required />
+        </div>
+        
+        <h3>What is your favorite hobbies to do when you have free time?</h3>
+        <div class="form-control">
+          <input type="radio" id="r-movies" value="Movies" name="hobbies" v-model="chosenHobbies" />
+          <label for="r-movies">Movies</label>
         </div>
         <div class="form-control">
           <input
             type="radio"
-            id="rating-average"
-            value="average"
-            name="rating"
-            v-model="chosenRating"
+            id="rating-sport"
+            value="Sport"
+            name="hobbies"
+            v-model="chosenHobbies"
           />
-          <label for="rating-average">Average</label>
+          <label for="rating-sport">Sport</label>
         </div>
         <div class="form-control">
-          <input type="radio" id="rating-great" value="great" name="rating" v-model="chosenRating" />
-          <label for="rating-great">Great</label>
+          <input type="radio" id="r-art" value="Art" name="hobbies" v-model="chosenHobbies" />
+          <label for="r-art">Art</label>
+        </div>
+        <div class="form-control">
+          <input type="radio" id="r-music" value="Music" name="hobbies" v-model="chosenHobbies" />
+          <label for="r-music">Music</label>
+        </div>
+        <div class="form-control">
+          <input type="radio" id="r-video-games" value="VideoGames" name="hobbies" v-model="chosenHobbies" />
+          <label for="r-video-games">Video Games</label>
+        </div>
+        <div class="form-control">
+          <input type="radio" id="r-cooking" value="Cooking" name="hobbies" v-model="chosenHobbies" />
+          <label for="r-cooking">Cooking</label>
+        </div>
+        <div class="form-control">
+          <input type="radio" id="r-outside" value="OutsideActivities" name="hobbies" v-model="chosenHobbies" />
+          <label for="r-outside">Outside Recreational Activities (Canoeing, Hiking, etc.)</label>
+        </div>
+        <div class="form-control">
+          <input type="radio" id="r-other" value="Other" name="hobbies" v-model="chosenHobbies" />
+          <label for="r-other">Other</label>
         </div>
         <p
           v-if="invalidInput"
@@ -43,7 +69,8 @@ export default {
   data() {
     return {
       enteredName: '',
-      chosenRating: null,
+      enteredAge: '',
+      chosenHobbies: null,
       invalidInput: false,
       error: null,
     };
@@ -51,7 +78,7 @@ export default {
   // emits: ['survey-submit'],
   methods: {
     submitSurvey() {
-      if (this.enteredName === '' || !this.chosenRating) {
+      if (this.enteredName === '' || !this.chosenHobbies) {
         this.invalidInput = true;
         return;
       }
@@ -59,7 +86,7 @@ export default {
 
       // this.$emit('survey-submit', {
       //   userName: this.enteredName,
-      //   rating: this.chosenRating,
+      //   rating: this.chosenHobbies,
       // });
 
       this.error = null;
@@ -70,7 +97,8 @@ export default {
         },
         body: JSON.stringify({
           name: this.enteredName,
-          rating: this.chosenRating,
+          age: this.enteredAge,
+          hobbies: this.chosenHobbies,
         }),
       })
         .then((response) => {
@@ -86,7 +114,7 @@ export default {
         });
 
       this.enteredName = '';
-      this.chosenRating = null;
+      this.chosenHobbies = null;
     },
   },
 };

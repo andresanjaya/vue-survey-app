@@ -1,18 +1,18 @@
 <template>
   <li>
     <p>
-      <span class="highlight">{{ name }}</span> rated the learning experience
-      <span :class="ratingClass">{{ rating }}</span>.
+      <span class="highlight">{{ name }}</span> ({{ age }}  y.o) favorite hobbies is
+      <span :class="hobbiesClass">{{ hobbies }}</span>.
     </p>
   </li>
 </template>
 
 <script>
 export default {
-  props: ['name', 'rating'],
+  props: ['name', 'age', 'hobbies'],
   computed: {
-    ratingClass() {
-      return 'highlight rating--' + this.rating;
+    hobbiesClass() {
+      return 'highlight hobbies--' + this.hobbies;
     },
   },
 };
@@ -35,15 +35,46 @@ p {
   font-weight: bold;
 }
 
-.rating--poor {
-  color: #b80056;
+.hobbies--Movies {
+  color: #00ADB5;
 }
 
-.rating--average {
-  color: #330075;
+.hobbies--Sport {
+  color: #FFCE41;
 }
 
-.rating--great {
-  color: #008327;
+.hobbies--Art {
+  color: #E84545;
 }
+
+.hobbies--Music {
+  color: #1FAB89;
+}
+
+.hobbies--VideoGames {
+  color: #424874;
+}
+
+.hobbies--Cooking {
+  color: #F07B3F;
+}
+
+.hobbies--OutsideActivities {
+  color: #F07B3F;
+}
+
+.hobbies--Cooking {
+  color: #F07B3F;
+}
+
+
+
+.hobbies--OutsideActivities {
+  color: #17B978;
+}
+
+.hobbies--OutsideActivities {
+  color: #17B978;
+}
+
 </style>

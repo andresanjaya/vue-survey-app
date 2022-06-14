@@ -13,7 +13,8 @@
           v-for="result in results"
           :key="result.id"
           :name="result.name"
-          :rating="result.rating"
+          :age="result.age"
+          :hobbies="result.hobbies"
         ></survey-result>
       </ul>
     </base-card>
@@ -51,7 +52,8 @@ export default {
             results.push({
               id: id,
               name: data[id].name,
-              rating: data[id].rating,
+              age: data[id].age,
+              hobbies: data[id].hobbies,
             });
           }
           this.results = results;
